@@ -1,0 +1,49 @@
+<div *ngIf="!auth.user">
+  <form>
+    <fieldset>
+      <legend>Login</legend>
+      <div>Email</div>
+      <input type="text" name="email" [(ngModel)]="email" />
+      <div>Senha</div>
+      <input type="password" name="password" [(ngModel)]="password" />
+      <hr />
+      <button (click)="auth.emailSignin(this.email, this.password)">
+        Login with e-mail
+      </button>
+      |
+      <button (click)="auth.googleSignin()">Login with Google</button>
+    </fieldset>
+  </form>
+</div>
+
+<div *ngIf="auth.error" style="color: red">
+  {{ auth.error }}
+</div>
+<div *ngIf="auth.user">
+  Logged as <b>{{ auth.user.email }}</b> |
+  <button (click)="auth.signOut()">Exit</button>
+  <hr />
+
+  <h2>Firebase list</h2>
+  <hr />
+  <div>Task</div>
+  <div><input [(ngModel)]="formNewTask" /></div>
+  <div>Description</div>
+  <div><input type="text" [(ngModel)]="formNewDescription" /></div>
+  <br />
+  <button (click)="addItem()">Adicionar</button>
+  <hr />
+  <table border="1">
+    <tr>
+      <th>Task</th>
+      <th>Description</th>
+    </tr>
+    <tr *ngFor="let item of list | async">
+      <td [title]="['chave: ' + item.key]">{{ item.task }}</td>
+      <td>{{ item.description }}</td>
+      <td>
+        <button (click)="deleteItem(item.key)">Done</button>
+      </td>
+    </tr>
+  </table>
+</div>
