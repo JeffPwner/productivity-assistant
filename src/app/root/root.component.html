@@ -3,9 +3,11 @@
     <fieldset>
       <legend>Login</legend>
       <div>Email</div>
-      <input type="text" name="email" [(ngModel)]="email" />
+      <input type="text" name="email" [(ngModel)]="email" 
+      placeholder="Seu email aqui"/>
       <div>Senha</div>
-      <input type="password" name="password" [(ngModel)]="password" />
+      <input type="password" name="password" [(ngModel)]="password" 
+      placeholder="Sua senha aqui"/>
       <hr />
       <button (click)="auth.emailSignin(this.email, this.password)">
         Login with e-mail
