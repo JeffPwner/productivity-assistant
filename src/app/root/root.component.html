@@ -30,7 +30,7 @@
   {{ auth.error }}
 </div>
 <div *ngIf="auth.user">
-  Logged as <b>{{ auth.user.email }}</b> |
+  Logged as <b>{{ auth.user.email }}</b> &nbsp;&nbsp;
   <button (click)="auth.signOut()">Exit</button>
   <hr />
 
@@ -38,7 +38,9 @@
   <div>Task</div>
   <div><input [(ngModel)]="formNewTask" /></div>
   <div>Description</div>
-  <div><input type="text" [(ngModel)]="formNewDescription" /></div>&nbsp;<button (click)="addItem()">
+  <div><input type="text" [(ngModel)]="formNewDescription" /></div>
+  <br />
+  <button (click)="addItem()">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="16"
