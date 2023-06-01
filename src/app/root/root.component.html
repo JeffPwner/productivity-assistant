@@ -1,109 +1,123 @@
-<div *ngIf="!auth.user">
-  <form>
-    <fieldset>
-      <legend>Login</legend>
-      <div>Email</div>
-      <input
-        type="text"
-        name="email"
-        [(ngModel)]="email"
-        placeholder="Seu email aqui"
-      />
-      <div>Senha</div>
-      <input
-        type="password"
-        name="password"
-        [(ngModel)]="password"
-        placeholder="Sua senha aqui"
-      />
-      <hr />
-      <button (click)="auth.emailSignin(this.email, this.password)">
-        Login with e-mail
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <div *ngIf="!auth.user">
+      <form>
+        <fieldset>
+          <legend>Login</legend>
+          <div>Email</div>
+          <input
+            type="text"
+            name="email"
+            [(ngModel)]="email"
+            placeholder="Seu email aqui"
+          />
+          <div>Senha</div>
+          <input
+            type="password"
+            name="password"
+            [(ngModel)]="password"
+            placeholder="Sua senha aqui"
+          />
+          <hr />
+          <button (click)="auth.emailSignin(this.email, this.password)">
+            Login with e-mail
+          </button>
+          &nbsp;&nbsp;
+          <button (click)="auth.googleSignin()">Login with Google</button>
+        </fieldset>
+      </form>
+    </div>
+
+    <div *ngIf="auth.error" style="color: red">
+      {{ auth.error }}
+    </div>
+    <div *ngIf="auth.user">
+      Logged as <b>{{ auth.user.email }}</b> &nbsp;&nbsp;
+      <button (click)="auth.signOut()">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-box-arrow-in-left"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"
+          />
+          <path
+            fill-rule="evenodd"
+            d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"
+          />
+        </svg>
       </button>
-      &nbsp;&nbsp;
-      <button (click)="auth.googleSignin()">Login with Google</button>
-    </fieldset>
-  </form>
-</div>
+      <hr />
 
-<div *ngIf="auth.error" style="color: red">
-  {{ auth.error }}
-</div>
-<div *ngIf="auth.user">
-  Logged as <b>{{ auth.user.email }}</b> &nbsp;&nbsp;
-  <button (click)="auth.signOut()">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="16"
-      height="16"
-      fill="currentColor"
-      class="bi bi-box-arrow-in-left"
-      viewBox="0 0 16 16"
-    >
-      <path
-        fill-rule="evenodd"
-        d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"
-      />
-      <path
-        fill-rule="evenodd"
-        d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"
-      />
-    </svg>
-  </button>
-  <hr />
-
-  <h2>Tasks list</h2>
-  <div>Task</div>
-  <div><input [(ngModel)]="formNewTask" /></div>
-  <div>Description</div>
-  <div>
-    <input type="text" [(ngModel)]="formNewDescription" />
-    &nbsp;
-    <button (click)="addItem()">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="16"
-        height="16"
-        fill="currentColor"
-        class="bi bi-plus-square-fill"
-        viewBox="0 0 16 16"
-      >
-        <path
-          d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"
-        />
-      </svg>
-    </button>
-  </div>
-  <br />
-  <hr />
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Task</th>
-        <th>Description</th>
-        <th>Status</th>
-      </tr>
-    </thead>
-    <tr *ngFor="let item of list | async">
-      <td [title]="['chave: ' + item.key]">{{ item.task }}</td>
-      <td>{{ item.description }}</td>
-      <td>
-        <button (click)="deleteItem(item.key)">
+      <h2>Tasks list</h2>
+      <div>Task</div>
+      <div><input [(ngModel)]="formNewTask" /></div>
+      <div>Description</div>
+      <div>
+        <input type="text" [(ngModel)]="formNewDescription" />
+        &nbsp;
+        <button (click)="addItem()">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
             height="16"
             fill="currentColor"
-            class="bi bi-trash3-fill"
+            class="bi bi-plus-lg"
             viewBox="0 0 16 16"
-            align-content="center"
           >
             <path
-              d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"
+              fill-rule="evenodd"
+              d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
             />
           </svg>
         </button>
-      </td>
-    </tr>
-  </table>
-</div>
+      </div>
+      <br />
+      <hr />
+      <div class="m-4">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>Description</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider">
+            <tr *ngFor="let item of list | async">
+              <td [title]="['chave: ' + item.key]">{{ item.task }}</td>
+              <td>{{ item.description }}</td>
+              <td>
+                <button (click)="deleteItem(item.key)">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-trash3-fill"
+                    viewBox="0 0 16 16"
+                    align-content="center"
+                  >
+                    <path
+                      d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"
+                    />
+                  </svg>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
