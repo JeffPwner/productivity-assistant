@@ -15,11 +15,12 @@ export interface Item {
 }
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './root.component.html',
-  styleUrls: ['./root.component.css'],
+  selector: 'app-main',
+  standalone: false,
+  templateUrl: './main.component.html',
+  styleUrls: ['./main.component.css'],
 })
-export class RootComponent implements OnInit {
+export class MainComponent implements OnInit {
   isContainerVisible = false;
   email = '' as string;
   password = '' as string;
