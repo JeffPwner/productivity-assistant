@@ -74,7 +74,7 @@
 <div *ngIf="auth.error" style="color: red" class="container">
   {{ auth.error }}
 </div>
-<div *ngIf="auth.user" class="container">
+<div *ngIf="auth.user" class="container mt-2">
   Logged as <b>{{ auth.user.email }}</b> |
   <button (click)="auth.signOut()" class="btn btn-primary">Exit</button>
   <hr />
