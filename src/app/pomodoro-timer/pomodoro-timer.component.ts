@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pomodoro-timer.component.css'],
 })
 export class PomodoroTimerComponent implements OnInit {
+  isContainerVisible = false;
   minutes: number = 25;
   seconds: number = 0;
   timerRunning: boolean = false;
@@ -18,6 +19,10 @@ export class PomodoroTimerComponent implements OnInit {
 
   ngOnInit() {
     this.resetTimer();
+  }
+
+  toggleContainerPomodoro() {
+    this.isContainerVisible = !this.isContainerVisible;
   }
 
   startTimer() {

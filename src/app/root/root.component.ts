@@ -20,6 +20,7 @@ export interface Item {
   styleUrls: ['./root.component.css'],
 })
 export class RootComponent implements OnInit {
+  isContainerVisible = false;
   email = '' as string;
   password = '' as string;
 
@@ -41,6 +42,10 @@ export class RootComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  toggleContainerTodoList() {
+    this.isContainerVisible = !this.isContainerVisible;
+  }
 
   addItem() {
     this.listRef.push({
