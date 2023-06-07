@@ -81,7 +81,9 @@
 
   <app-pomodoro-timer></app-pomodoro-timer>
   <div id="btn-div2">
-    <button (click)="toggleContainerTodoList()">Todo-List</button>
+    <button (click)="toggleContainerTodoList()" class="btn btn-primary">
+      Todo-List
+    </button>
   </div>
   <div class="container" [hidden]="!isContainerVisible">
     <h1>My list of tasks</h1>
@@ -170,7 +172,7 @@
           <h4 class="card-title">{{ item.description }}</h4>
         </div>
         <div class="card-footer text-muted d-flex justify-content-between">
-          <div>Aqui deveria ir a data</div>
+          <div></div>
           <div>
             <button
               (click)="deleteItem(item.key)"
