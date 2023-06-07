@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RootComponent } from './root/root.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
-
-import { MainComponent } from './main/main.component';
-import { PomodoroTimerComponent } from './pomodoro-timer/pomodoro-timer.component';
-
 import { AuthService } from './auth.service';
+import { PomodoroTimerComponent } from './pomodoro-timer/pomodoro-timer.component';
+import { TodoListComponent } from './todo-list/todo-list.component';
+
 
 @NgModule({
   imports: [
@@ -29,9 +28,8 @@ import { AuthService } from './auth.service';
     AngularFireAuthModule,
     AngularFireDatabaseModule,
   ],
-  declarations: [MainComponent, PomodoroTimerComponent],
-  bootstrap: [MainComponent, PomodoroTimerComponent],
+  declarations: [RootComponent,PomodoroTimerComponent,TodoListComponent],
+  bootstrap: [RootComponent, PomodoroTimerComponent,TodoListComponent],
   providers: [AuthService],
 })
-
 export class AppModule {}

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-pomodoro-timer',
-  standalone: false,
   templateUrl: './pomodoro-timer.component.html',
   styleUrls: ['./pomodoro-timer.component.css'],
 })
